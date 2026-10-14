@@ -12,7 +12,7 @@ This package launches a PAL Omni-directional drive robot in an empty Gazebo worl
 
 ## 3. Setup
 
-> **Using an existing workspace?** Make sure it has an `src` directory, and replace **`~/pal_ws`** in  **all** the commands below with the path to your workspace.
+> **Using an existing workspace?** Make sure it has an `src` directory, and replace **`~/pal_ws`** in **all** the commands below with the path to your workspace.
 
 ### Step 1: Create a ROS 2 workspace
 
@@ -22,7 +22,7 @@ mkdir -p ~/pal_ws/src
 
 **If** you are using an existing workspace, **skip** this step.
 
-### Step 2: Clone the package
+### Step 2: Clone the repository
 
 Go to the workspace root:
 
@@ -30,12 +30,13 @@ Go to the workspace root:
 cd ~/pal_ws
 ```
 
-Clone the package into the `src` directory:
+Clone the repository into the `src` directory:
 
 ```bash
-git clone https://github.com/FocasLab/pal_omnidirectional_bringup.git src/sim_bringup
+git clone https://github.com/FocasLab/pal_omnidirectional_bringup.git src/pal_omnidirectional_bringup
 ```
 
+The ROS package will be at `src/pal_omnidirectional_bringup/sim_bringup`.
 
 ### Step 3: Install missing dependencies
 
@@ -68,7 +69,7 @@ source /opt/ros/humble/setup.bash
 source install/setup.bash
 ```
 
-Launch the empty world and the robot :
+Launch the empty world and the robot:
 
 ```bash
 ros2 launch sim_bringup simulation.launch.py
@@ -82,7 +83,7 @@ This places the robot at the origin: `x=0`, `y=0`, `yaw=0`.
 ros2 launch sim_bringup simulation.launch.py x:=2.0 y:=1.0 yaw:=1.57
 ```
 
-`x` and `y` are in metres. `yaw` is in radians. Run either the default or optional  launch command, **not both**.
+`x` and `y` are in metres. `yaw` is in radians. Run either the default or optional launch command, **not both**.
 
 ### Terminal 2: Spawn the obstacle
 
