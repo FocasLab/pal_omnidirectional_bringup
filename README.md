@@ -115,7 +115,7 @@ The argument format is **`x,y,radius`**. This example places the obstacle at `(1
 
 ### Issue 1: Gazebo closes immediately or the robot does not appear
 
-An earlier Gazebo server may still be running. Run to kill the server  :
+An earlier Gazebo server may still be running , terminate that server .Run to kill the server  :
 
 ```bash
 pkill -x gzserver
