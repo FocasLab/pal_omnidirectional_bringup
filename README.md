@@ -102,6 +102,24 @@ ros2 run sim_bringup spawn_obstacle 1,2,0.3
 
 The argument format is **`x,y,radius`**. This example places the obstacle at `(1, 2)` metres with a radius of `0.3` metres. Its height is fixed at 1 metre, and it rests on the ground. Running the command again replaces the existing obstacle.
 
+### Terminal 3 (optional): Test robot motion
+
+Keep Terminal 1 running. Open a third terminal and source the workspace:
+
+```bash
+cd ~/pal_ws
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+```
+
+Start keyboard teleoperation:
+
+```bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+
+Ensure cursor is present on Terminal 3. 
+
 ## 5. Topics
 
 | Topic | Message type | Purpose |
