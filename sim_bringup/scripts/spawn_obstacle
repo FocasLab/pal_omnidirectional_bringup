@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+import math
+import sys
+
+import rclpy
+from rclpy.utilities import remove_ros_args
+from sim_bringup.srv import SetObstacle
+
+
+def main():
+    arguments = remove_ros_args(sys.argv)[1:]
+    try:
+        if len(arguments) != 1:
+            raise ValueError
+        x, y, radius = map(float, arguments[0].split(','))
+        if not all(map(math.isfinite, (x, y, radius))) or radius <= 0:
+            raise ValueError
+    except ValueError:
+        print('Usage: ros2 run sim_bringup spawn_obstacle x,y,radius\n'
+              'Values must be finite and radius must be positive.', file=sys.stderr)
+        return 2
+
+    rclpy.init(args=sys.argv)
+    node = rclpy.create_node('spawn_obstacle_client')
+    try:
+        client = node.create_client(SetObstacle, '/set_obstacle')
+        if not client.wait_for_service(timeout_sec=10.0):
+            print('Obstacle service unavailable. Launch the world first.', file=sys.stderr)
+            return 1
+        future = client.call_async(SetObstacle.Request(x=x, y=y, radius=radius))
+        rclpy.spin_until_future_complete(node, future, timeout_sec=90.0)
+        if not future.done():
+            print('Obstacle request timed out; check the simulation terminal.', file=sys.stderr)
+            return 1
+        response = future.result()
+        print(response.message, file=sys.stdout if response.success else sys.stderr)
+        return 0 if response.success else 1
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    try:
+        sys.exit(main())
+    except KeyboardInterrupt:
+        sys.exit(130)
