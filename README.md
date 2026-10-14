@@ -10,25 +10,65 @@ This package launches a PAL Omni-directional drive robot in an empty Gazebo worl
 - ROS 2 Humble
 - Gazebo Classic 11
 
-## 3. Terminal Commands
+## 3. Setup
 
-After cloning **`src`** into a ROS 2 workspace, open a terminal at the workspace root and build it:
+> **Using an existing workspace?** Make sure it has an `src` directory, and replace **`~/pal_ws`** in the commands below with the path to your workspace.
+
+### Step 1: Create a ROS 2 workspace
 
 ```bash
+mkdir -p ~/pal_ws/src
+```
+
+**If** you are using an existing workspace, **skip** this step.
+
+### Step 2: Clone the package
+
+Go to the workspace root:
+
+```bash
+cd ~/pal_ws
+```
+
+Clone the package into the `src` directory:
+
+```bash
+git clone https://github.com/FocasLab/pal_omnidirectional_bringup.git src/sim_bringup
+```
+
+
+### Step 3: Install missing dependencies
+
+```bash
+source /opt/ros/humble/setup.bash
+rosdep install --from-paths src --ignore-src -r -y
+```
+
+`rosdep` installs dependencies declared by the package that are missing from your system.
+
+### Step 4: Build the workspace
+
+Run the build command from the workspace root:
+
+```bash
+cd ~/pal_ws
 source /opt/ros/humble/setup.bash
 colcon build --symlink-install
 ```
 
+## 4. Usage
+
 ### Terminal 1: Launch the world and robot
 
-From the workspace root, source the environment:
+Open a terminal and source the workspace:
 
 ```bash
+cd ~/pal_ws
 source /opt/ros/humble/setup.bash
 source install/setup.bash
 ```
 
-Launch the empty world and robot together:
+Launch the empty world and the robot :
 
 ```bash
 ros2 launch sim_bringup simulation.launch.py
@@ -36,19 +76,20 @@ ros2 launch sim_bringup simulation.launch.py
 
 This places the robot at the origin: `x=0`, `y=0`, `yaw=0`.
 
-**Optionally**, to launch the robot at a desired position and orientation:
+**Optionally**, launch the robot at a desired position and orientation:
 
 ```bash
 ros2 launch sim_bringup simulation.launch.py x:=2.0 y:=1.0 yaw:=1.57
 ```
 
-`x` and `y` are in metres. `yaw` is in radians. Run either commands , **not both**.
+`x` and `y` are in metres. `yaw` is in radians. Run either the default or optional  launch command, **not both**.
 
 ### Terminal 2: Spawn the obstacle
 
-Keep Terminal 1 running. Open another terminal at the workspace root and source the environment:
+Keep Terminal 1 running. Open a second terminal and source the workspace:
 
 ```bash
+cd ~/pal_ws
 source /opt/ros/humble/setup.bash
 source install/setup.bash
 ```
@@ -61,7 +102,7 @@ ros2 run sim_bringup spawn_obstacle 1,2,0.3
 
 The argument format is **`x,y,radius`**. This example places the obstacle at `(1, 2)` metres with a radius of `0.3` metres. Its height is fixed at 1 metre, and it rests on the ground. Running the command again replaces the existing obstacle.
 
-## 4. Topics
+## 5. Topics
 
 | Topic | Message type | Purpose |
 | --- | --- | --- |
