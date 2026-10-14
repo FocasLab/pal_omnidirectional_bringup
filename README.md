@@ -36,7 +36,6 @@ Clone the repository into the `src` directory:
 git clone https://github.com/FocasLab/pal_omnidirectional_bringup.git src/pal_omnidirectional_bringup
 ```
 
-The ROS package will be at `src/pal_omnidirectional_bringup/sim_bringup`.
 
 ### Step 3: Install missing dependencies
 
