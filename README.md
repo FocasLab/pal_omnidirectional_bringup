@@ -12,7 +12,7 @@ This package launches a PAL Omni-directional drive robot in an empty Gazebo worl
 
 ## 3. Setup
 
-> **Using an existing workspace?** Make sure it has an `src` directory, and replace **`~/pal_ws`** in the commands below with the path to your workspace.
+> **Using an existing workspace?** Make sure it has an `src` directory, and replace **`~/pal_ws`** in  **all** the commands below with the path to your workspace.
 
 ### Step 1: Create a ROS 2 workspace
 
