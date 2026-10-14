@@ -30,12 +30,12 @@ Go to the workspace root:
 cd ~/pal_ws
 ```
 
-Clone the repository into the `src` directory:
+Clone the repository :
 
 ```bash
 git clone https://github.com/FocasLab/pal_omnidirectional_bringup.git src/pal_omnidirectional_bringup
 ```
-
+This command **places** the repository inside **src**.
 
 ### Step 3: Install missing dependencies
 
