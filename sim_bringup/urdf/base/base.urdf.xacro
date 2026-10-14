@@ -15,7 +15,7 @@
   limitations under the License.
 -->
 
-<!-- Modified for the ALNC simulation: local assets and minimal dependencies. -->
+<!-- Modified for bringup: local assets and minimal dependencies. -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:property name="wheel_radius"     value="0.0762"/>

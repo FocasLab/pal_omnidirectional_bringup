@@ -2,7 +2,7 @@
 <package format="3">
   <name>sim_bringup</name>
   <version>0.1.0</version>
-  <description>PAL Omni Base simulation for the ALNC assignment.</description>
+  <description>PAL omni-directional robot bringup</description>
   <maintainer email="yusufkhambaty07@gmail.com">Yusuf</maintainer>
   <license>Apache-2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>

@@ -14,7 +14,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  -->
-<!-- Modified for the ALNC simulation: Classic plugins and fixed interfaces. -->
+<!-- Modified for bringup: Classic plugins and fixed interfaces. -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:macro name="sick_tim571_laser_gazebo" params="name ros_topic update_rate min_angle max_angle">
     <gazebo reference="${name}_link">

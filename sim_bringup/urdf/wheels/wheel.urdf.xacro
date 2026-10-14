@@ -14,7 +14,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
  -->
-<!-- Modified for the ALNC simulation: local assets and minimal dependencies. -->
+<!-- Modified for bringup: local assets and minimal dependencies. -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find sim_bringup)/urdf/wheels/wheel.gazebo.xacro"/>
