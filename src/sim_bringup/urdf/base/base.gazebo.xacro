@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+  Copyright (c) 2024 PAL Robotics S.L. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!-- Modified for the ALNC simulation: Classic plugins and fixed interfaces. -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="base_gazebo" params="name">
+    <gazebo reference="${name}_link"><material>Gazebo/White</material></gazebo>
+    <gazebo>
+      <plugin name="planar_move" filename="libgazebo_ros_planar_move.so">
+        <update_rate>100</update_rate>
+        <publish_rate>50</publish_rate>
+        <publish_odom>true</publish_odom>
+        <publish_odom_tf>true</publish_odom_tf>
+        <odometry_frame>world</odometry_frame>
+        <robot_base_frame>base_footprint</robot_base_frame>
+      </plugin>
+      <plugin name="joint_states" filename="libgazebo_ros_joint_state_publisher.so">
+        <update_rate>50</update_rate>
+        <joint_name>wheel_front_right_joint</joint_name>
+        <joint_name>wheel_front_left_joint</joint_name>
+        <joint_name>wheel_rear_right_joint</joint_name>
+        <joint_name>wheel_rear_left_joint</joint_name>
+      </plugin>
+    </gazebo>
+  </xacro:macro>
+</robot>
