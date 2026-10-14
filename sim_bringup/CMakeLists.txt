@@ -18,7 +18,7 @@ install(DIRECTORY launch urdf meshes worlds models
 install(PROGRAMS scripts/spawn_obstacle scripts/obstacle_server
   DESTINATION lib/${PROJECT_NAME}
 )
-install(FILES README.md LICENSE DESTINATION share/${PROJECT_NAME})
+install(FILES LICENSE DESTINATION share/${PROJECT_NAME})
 
 ament_export_dependencies(rosidl_default_runtime)
 ament_package()
