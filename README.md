@@ -110,3 +110,29 @@ The argument format is **`x,y,radius`**. This example places the obstacle at `(1
 | `/odom` | `nav_msgs/msg/Odometry` | Read the robot’s position, orientation, and velocity. The pose uses the `world` frame. |
 | `/obstacle` | `sim_bringup/msg/Obstacle` | Read the obstacle’s centre position and radius. |
 | `/scan` | `sensor_msgs/msg/LaserScan` | Read distance measurements from the robot’s LiDAR. |
+
+## 6. Troubleshooting
+
+### Issue 1: Gazebo closes immediately or the robot does not appear
+
+An earlier Gazebo server may still be running. Run to kill the server  :
+
+```bash
+pkill -x gzserver
+```
+
+### Issue 2: Cannot see topics or publish and subscribe to them
+
+Check the ROS domain ID in **both terminals**:
+
+```bash
+echo "${ROS_DOMAIN_ID:-0}"
+```
+
+If the values differ, set Terminal 2 to the value printed in Terminal 1:
+
+```bash
+export ROS_DOMAIN_ID=ID
+```
+
+Replace `ID` with the number printed in Terminal 1, then restart the command in Terminal 2.
